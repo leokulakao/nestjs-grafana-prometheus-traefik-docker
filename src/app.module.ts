@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import {
   PrometheusModule,
   makeCounterProvider,
+  makeGaugeProvider,
 } from '@willsoto/nestjs-prometheus';
 
 @Module({
@@ -15,9 +16,10 @@ import {
   controllers: [AppController],
   providers: [
     AppService,
-    makeCounterProvider({
+    makeGaugeProvider({
       name: 'metric_test',
       help: 'metric_test_help',
+      labelNames: ['henvio_count'],
     }),
   ],
 })
